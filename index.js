@@ -5,7 +5,7 @@ var correctHTML = document.getElementById("correct");
 var wrongHTML = document.getElementById("wrong");
 var resultHTML = document.getElementById("result");
 var solution = ["Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"]
-var solution = ["Alfa", "Bravo", "Charlie"];
+//var solution = ["Alfa", "Bravo", "Charlie"];
 var entries;
 var question = "";
 var correct = [];
