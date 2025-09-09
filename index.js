@@ -4,6 +4,8 @@ var toGo = document.getElementById("toGo");
 var correctHTML = document.getElementById("correct");
 var wrongHTML = document.getElementById("wrong");
 var resultHTML = document.getElementById("result");
+var solution = ["Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"]
+var entries;
 var question = "";
 var correct = [];
 var wrong = [];
@@ -15,37 +17,24 @@ typerId.addEventListener("keypress", function (event) {
   }
 });
 
-function getNext() {
-  question = entries.splice(0, 1).toString();
-  typer[0].value = question.charAt(0);
-}
-
-function updateHTML() {
-  toGo.innerHTML = `Nog ${entries.length} te gaan`;
-  correctHTML.innerText = `${correct.length} juist`;
-  wrongHTML.innerText = `${wrong.length} fout`;
-}
-
-var solution = ["Alfa", "Bravo", "Charlie"];
-var entries = solution;
 function game() {
+  //var solution = ["Alfa", "Bravo", "Charlie"];
+  entries = solution;
   for (let i = 0; i < entries.length; i++) {
     new_index = Math.floor(Math.random() * entries.length);
     var temp = entries[new_index];
     entries[new_index] = entries[i];
     entries[i] = temp;
   }
+  console.log(entries, solution);
   var correct = [];
   var wrong = [];
   resultHTML.innerText = "";
-  updateHTML();
   getNext();
 }
 
-//var i = 0;
 function validate() {
   if (entries.length >= 0) {
-    //  i < 3
     if (question == typer[0].value) {
       resultHTML.innerText = "juist";
       correct.push(question);
@@ -53,11 +42,21 @@ function validate() {
       resultHTML.innerText = "fout";
       wrong.push(question);
     }
-    updateHTML();
     getNext();
-    //i++;
+    if (entries.length == 0) {
+      resultHTML.innerText = `Gedaan, je ${wrong.length + (wrong.length == 1 ? " fout was" : "fouten waren")}: \n ${wrong.sort().toString()}`;
+    }
   }
-  if (entries.length == 0) {
-    resultHTML.innerText = `Gedaan, je ${wrong.length + (wrong.length == 1 ? " fout was" : " fouten waren")}: \n ${wrong.sort().toString()}`;
-  }
+}
+
+function getNext() {
+  question = entries.splice(0, 1).toString();
+  typer[0].value = question.charAt(0);
+  updateHTML();
+}
+
+function updateHTML() {
+  toGo.innerHTML = `Nog ${entries.length} te gaan`;
+  correctHTML.innerText = `${correct.length} juist`;
+  wrongHTML.innerText = `${wrong.length} fout`;
 }
