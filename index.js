@@ -5,11 +5,12 @@ var correctHTML = document.getElementById("correct");
 var wrongHTML = document.getElementById("wrong");
 var resultHTML = document.getElementById("result");
 var solution = ["Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"]
-var solution = ["Alfa", "Bravo", "Charlie"];
+//var solution = ["Alfa", "Bravo", "Charlie"];
 var entries;
 var question = "";
 var correct = [];
 var wrong = [];
+var wrongInput = [];
 var done;
 
 window.onload = function() {
@@ -43,12 +44,14 @@ function validate() {
     } else {
       resultHTML.innerText = "fout";
       wrong.push(question);
+      wrongInput.push(typer[0].value);
     }      
   } 
   if (entries.length == 0) {
     done = true;
+    typer[0].value = "";
     updateHTML();
-    resultHTML.innerText = `${wrong.length == 0 ? "Perfecte score" : `Gedaan, je ${wrong.length + (wrong.length == 1 ? " fout was" : " fouten waren")}: \n ${wrong.sort().toString()}`}`
+    resultHTML.innerText = `${wrong.length == 0 ? "Perfecte score" : `Gedaan, je ${wrong.length + (wrong.length == 1 ? " fout was" : " fouten waren")}: \n ${wrongInput.sort().toString()} \n Het antwoord was: \n ${wrong.sort().toString()}`}`
   } else {
     getNext();
   }
