@@ -12,6 +12,11 @@ var correct = [];
 var wrong = [];
 var wrongInput = [];
 var done;
+//Passwordchecker
+var solutionww = "test" //"1HmuVgV2J9mT83"
+var inputww = document.getElementById("inputww");
+var outputww = document.getElementById("correctie");
+
 
 window.onload = function() {
   resetGame();
@@ -75,4 +80,24 @@ function resetGame() {
   done = false;
   resultHTML.innerText = "";
   typer[0].value = "";
+}
+
+//Passwordchecker
+function checkAnswer(){
+    outputww.innerHTML = (inputww.value == solutionww ? "Juist" : correctieFunctie(inputww.value))
+    inputww.value = ""
+}
+
+function correctieFunctie(input){
+    var solArray = solutionww.split("");
+    var inputArray = input.split("");
+    for(var i = 0; i < solArray.length; i++){
+        if(solArray[i] !== inputArray[i]){
+            solArray[i] = `<mark>${solArray[i]}</mark>`
+        }
+    }
+    correctedSol = solArray.join("")
+    //console.log(correctedSol);
+    var output = "Fout <br>" + input + "<br>" + correctedSol
+    return output
 }
