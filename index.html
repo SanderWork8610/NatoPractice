@@ -5,21 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NATO Practice</title>
     <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+    <style>
+        .game{
+            border: 1px solid black;
+            padding: 3px;
+            width: fit-content;
+        }
+    </style>
 </head>
-<body>
-    <div id="Stats">
-        <button onclick="game()">Start game</button>
-        <div id="toGo"></div>
-        <div id="correct"></div>
-        <div id="wrong"></div>
+<body>    
+    <div class="game">
+        <div id="Stats">
+            <button onclick="game()">Start game</button>
+            <div id="toGo"></div>
+            <div id="correct"></div>
+            <div id="wrong"></div>
+        </div>
+        <div>
+            <input type="text" name="typer" id="typer">
+            <button id="validate" onclick="validate()">Validate</button>
+        </div>
+        <div id="result"></div>
     </div>
-    <div>
-        <input type="text" name="typer" id="typer">
-        <button id="validate" onclick="validate()">Validate</button>
-    </div>
-    <div id="result"></div>
 
-    <div id="passwordchecker">
+    <div id="passwordchecker" class="game">
         <input type="password" name="input" id="inputww">
         <button onclick="checkAnswer()">Correct</button>
         <div id="correctie"></div>
