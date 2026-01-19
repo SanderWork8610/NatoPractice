@@ -13,7 +13,7 @@ var wrong = [];
 var wrongInput = [];
 var done;
 //Passwordchecker
-var solutionww = "test" //"1HmuVgV2J9mT83"
+var solutionww = "1HmuVgV2J9mT83" //"test"
 var inputww = document.getElementById("inputww");
 var outputww = document.getElementById("correctie");
 
